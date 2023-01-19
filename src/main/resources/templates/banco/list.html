@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Banco</title>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Banco</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Resultado Pesquisa</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="offset-lg-2 col-lg-8">
+            <table class="table table-bordered table-hover local-data-table">
+                <thead>
+                <tr class="active">
+                    <th>Nome</th>
+                    <th>Código</th>
+                    <th>Site</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="banco: ${bancos}">
+                        <td><a th:href="@{/banco/show/} + ${banco.idBanco}" th:text="${banco.nome}" /></td>
+                        <td th:text="${banco.codigo}"/>
+                        <td th:text="${banco.site}"/>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/javascript" th:src="@{/js/templates/banco.js}"></script>
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>

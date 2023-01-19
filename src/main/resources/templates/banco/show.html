@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Banco</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Banco</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Exibir</li>
+        </ol>
+    </nav>
+
+    <form action="#" method="GET">
+        <input type="hidden" id="idBanco" name="idBanco" th:value="${banco.idBanco}" />
+
+        <div  class="row mb-3 pt-5 hidden-print">
+            <label class="control-label col-lg-2 col-form-label text-end" for="nome">Nome:</label>
+            <div class="col-lg-6">
+                <span class="form-control-plaintext fw-bold" th:text="${banco.nome}" />
+            </div>
+        </div>
+
+        <div  class="row mb-3 hidden-print">
+            <label class="control-label col-lg-2 col-form-label text-end" for="codigo">Código:</label>
+            <div class="col-lg-6">
+                <span class="form-control-plaintext fw-bold" th:text="${banco.codigo}" />
+            </div>
+        </div>
+
+        <th:if test="${banco.site.length() > 0}">
+            <div  class="row mb-3 hidden-print">
+                <label class="control-label col-lg-2 col-form-label text-end" for="site">Site:</label>
+                <div class="col-sm-8">
+                    <span class="form-control-plaintext fw-bold" th:text="${banco.site}" />
+                </div>
+            </div>
+        </th:if>
+
+        <div  class="row mb-3 hidden-print">
+            <div class="offset-lg-2 col-lg-10">
+                <a href="#" th:href="@{/banco/edit/} + ${banco.idBanco}" class="btn btn-primary">Editar</a>
+                <!--<a href="#" th:href="@{/banco/remove/} + ${banco.idBanco}" class="btn btn-primary">Excluir</a>-->
+                <a href="#" class="btn btn-primary" id="btnExcluir">Excluir</a>
+            </div>
+        </div>
+    </form>
+
+    <script type="text/javascript" th:src="@{/js/templates/banco.js}"></script>
+</div>
+
+</body>
+</html>

@@ -23,23 +23,14 @@
                         <li id="submenuBancoConsultar">
                             <a href="#" th:href="@{/banco/search}" class="nav-link px-0 link-light"> <span class="d-none d-sm-inline">Banco - Pesquisar</span></a>
                         </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle link-light">
-                        <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
-                    </a>
-                    <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                        <li class="w-100">
-                            <a href="#" class="nav-link px-0 link-light"> <span class="d-none d-sm-inline">Item</span> 1 </a>
+                        <li id="submenuProfissionalNovo" class="w-100">
+                            <a href="#" th:href="@{/profissional/novo}" class="nav-link px-0 link-light"> <span class="d-none d-sm-inline">Profissional - Cadastrar</span></a>
                         </li>
-                        <li>
-                            <a href="#" class="nav-link px-0 link-light"> <span class="d-none d-sm-inline">Item</span> 2 </a>
+                        <li id="submenuProfissionalConsultar">
+                            <a href="#" th:href="@{/profissional/search}" class="nav-link px-0 link-light"> <span class="d-none d-sm-inline">Profissional - Pesquisar</span></a>
                         </li>
                     </ul>
                 </li>
-
             </ul>
             <!--<hr>
             <div class="dropdown pb-4">

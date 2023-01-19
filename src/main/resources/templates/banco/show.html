@@ -20,14 +20,14 @@
         <div  class="row mb-3 pt-5 hidden-print">
             <label class="control-label col-lg-2 col-form-label text-end" for="nome">Nome:</label>
             <div class="col-lg-6">
-                <span class="form-control-plaintext fw-bold" th:text="${banco.nome}" />
+                <span class="form-control-plaintext fw-bold" th:text="${banco.nome}"></span>
             </div>
         </div>
 
         <div  class="row mb-3 hidden-print">
             <label class="control-label col-lg-2 col-form-label text-end" for="codigo">Código:</label>
             <div class="col-lg-6">
-                <span class="form-control-plaintext fw-bold" th:text="${banco.codigo}" />
+                <span class="form-control-plaintext fw-bold" th:text="${banco.codigo}"></span>
             </div>
         </div>
 
@@ -35,7 +35,7 @@
             <div  class="row mb-3 hidden-print">
                 <label class="control-label col-lg-2 col-form-label text-end" for="site">Site:</label>
                 <div class="col-sm-8">
-                    <span class="form-control-plaintext fw-bold" th:text="${banco.site}" />
+                    <span class="form-control-plaintext fw-bold" th:text="${banco.site}"></span>
                 </div>
             </div>
         </th:if>
@@ -43,7 +43,6 @@
         <div  class="row mb-3 hidden-print">
             <div class="offset-lg-2 col-lg-10">
                 <a href="#" th:href="@{/banco/edit/} + ${banco.idBanco}" class="btn btn-primary">Editar</a>
-                <!--<a href="#" th:href="@{/banco/remove/} + ${banco.idBanco}" class="btn btn-primary">Excluir</a>-->
                 <a href="#" class="btn btn-primary" id="btnExcluir">Excluir</a>
             </div>
         </div>

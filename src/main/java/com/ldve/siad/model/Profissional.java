@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.swing.text.MaskFormatter;
 
-import org.hibernate.validator.constraints.NotBlank;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,8 +17,12 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@NoArgsConstructor
 public class Profissional implements Serializable{
 	
 	private static final long serialVersionUID = 7780956915989539590L;
@@ -32,8 +36,10 @@ public class Profissional implements Serializable{
 	private int tipoPessoa;
 	private String cpf;
 	private String cnpj;
+	@JsonIgnore
 	@OneToMany(mappedBy="profissional", targetEntity = Vale.class)
 	private List<Vale> vales;
+	@JsonIgnore
 	@OneToMany(mappedBy="profissional", targetEntity = ReceitaProfissional.class)
 	private List<ReceitaProfissional> receitasProfissional;
 	@ManyToMany(mappedBy="profissionais")
@@ -41,8 +47,10 @@ public class Profissional implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="idBanco", referencedColumnName="idBanco")
 	private Banco banco;
+	@JsonIgnore
 	@OneToMany(mappedBy="profissional", targetEntity = FolhaPagamentoItem.class)
 	private List<FolhaPagamentoItem> folhaPagamentoItens;
+	@JsonIgnore
 	@OneToMany(mappedBy="profissional", targetEntity = VendaItem.class)
 	private List<VendaItem> vendasItems;
 	@NotNull
@@ -57,7 +65,6 @@ public class Profissional implements Serializable{
 				mf.setValueContainsLiteralCharacters(false);  
 				desc = mf.valueToString(cnpj);	
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -72,7 +79,6 @@ public class Profissional implements Serializable{
 				mf.setValueContainsLiteralCharacters(false);  
 				desc = mf.valueToString(cpf);	
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

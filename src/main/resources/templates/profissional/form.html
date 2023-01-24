@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Banco</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Profissional</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><span class="text-capitalize" th:text="${operacao}" /></li>
+        </ol>
+    </nav>
+
+    <form action="#" th:action="@{/profissional/save}" th:object="${profissional}" method="POST">
+		<input type="hidden" th:field="*{idProfissional}" />
+		<input type="hidden" th:field="*{banco.idBanco}" class="idBanco" />
+		
+		<div class="row mb-3 pt-5">
+			<label class="control-label col-lg-2 col-form-label text-end" for="nome">Nome</label>
+			<div class="col-lg-8">
+				<input type="text" class="form-control" th:field="*{nome}" placeholder="Informe o nome do profissional" autocomplete="off" required="required" />
+				<!-- <form:errors path="nome" class="local-errors" /> -->
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="control-label col-lg-2 col-form-label text-end" for="apelido">Apelido</label>
+			<div class="col-lg-3">
+				<input type="text" th:field="*{apelido}" class="form-control" placeholder="Informe o apelido" autocomplete="off" />
+				<!-- <form:errors path="apelido" class="local-errors" /> -->
+			</div>
+		</div>
+		
+		<div class="row mb-3">
+			<div class="offset-lg-2 col-lg-8">
+				<div class="form-check form-check-inline">
+					<input type="radio" class="form-check-input tipoPessoa" th:field="*{tipoPessoa}" th:value="1" required="required" />
+					<label class="form-check-label" th:for="${#ids.prev('tipoPessoa')}" th:text="Autônomo">Autônomo</label>
+				</div> 
+				&nbsp;&nbsp; 
+				<div class="form-check form-check-inline">
+					<input type="radio" class="form-check-input tipoPessoa" th:field="*{tipoPessoa}" th:value="4" required="required" />
+					<label class="form-check-label" th:for="${#ids.prev('tipoPessoa')}" th:text="CLT">CLT</label>
+				</div> 
+				&nbsp;&nbsp;
+				<div class="form-check form-check-inline">
+					<input type="radio" class="form-check-input tipoPessoa" th:field="*{tipoPessoa}" th:value="2" required="required" />
+					<label class="form-check-label" th:for="${#ids.prev('tipoPessoa')}" th:text="MEI">MEI</label>
+				</div>
+				&nbsp;&nbsp;
+				<div class="form-check form-check-inline">
+					<input type="radio" class="form-check-input tipoPessoa" th:field="*{tipoPessoa}" th:value="3" required="required" />
+					<label class="form-check-label" th:for="${#ids.prev('tipoPessoa')}">Pessoa Jurídica</label>
+				</div>
+				
+				<!-- <form:errors path="tipoPessoa" class="local-errors" /> -->
+			</div>
+		</div>
+		
+		<div class="row mb-3 d-none" id="divCpf">
+			<label class="control-label col-lg-2 col-form-label text-end" for="cpf">CPF</label>
+			<div class="col-lg-3">
+				<input type="text" th:field="*{cpf}" class="form-control cpf" placeholder="Informe o cpf do profissional" autocomplete="off" />
+			</div>
+			<!-- <div class="col-lg-6 local-errors hidden" id="errorCpf">
+				Informe um número de CPF válido 
+			</div> -->
+		</div>
+		
+		<div class="row mb-3 d-none" id="divCnpj">
+			<label class="control-label col-lg-2 col-form-label text-end" for="cnpj">CNPJ</label>
+			<div class="col-lg-3">
+				<input type="text" th:field="*{cnpj}" class="form-control cnpj" placeholder="Informe o cnpj do profissional" autocomplete="off" />
+			</div>
+			<!-- <div class="col-lg-6 local-errors hidden" id="errorCnpj">
+					Informe um número de CNPJ válido 
+			</div> -->
+		</div>
+		
+		<div class="row mb-3">
+			<label class="control-label col-lg-2 col-form-label text-end" for="nomeBanco">Banco</label>
+			<div class="col-lg-5">
+				<input type="text" class="form-control" id="nomeBanco" name="nomeBanco" data-provide="typeahead" placeholder="Informe o nome do banco p/ recebimento de proventos" autocomplete="off" />
+			</div>
+		</div>
+		
+		<div class="row mb-3">
+			<div class="offset-lg-2 col-lg-8">
+				<div class="form-check">
+					<input type="checkbox" class="form-check-input" th:field="*{ativo}" />
+					<label class="form-check-label" th:for="${#ids.prev('ativo')}">Ativo?</label>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row mb-3">
+			<div class="offset-lg-2 col-sm-10">
+				<button type="submit" class="btn btn-primary hidden-print" id="btnSalvar">Salvar</button>
+			</div>
+		</div>
+    </form>
+
+    <script type="text/javascript" th:src="@{/js/templates/profissional.js}"></script>
+</div>
+</body>
+
+</html>

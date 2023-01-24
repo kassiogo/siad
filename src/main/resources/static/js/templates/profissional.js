@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-/***
+/**
  * Adicionar um listener para o evento click em cada um dos inputs com a classe ".tipoPessoa".
  */
 document.querySelectorAll('.tipoPessoa').forEach((item) => {
